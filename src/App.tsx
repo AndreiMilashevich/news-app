@@ -1,24 +1,25 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import logo from './logo.svg';
-import './App.css';
+import './App.scss';
+import Header from './components/Shared/Header/Header';
 
 function App() {
+
+  const newsData = [];
+
+  const url = 'https://newsapi.org/v2/top-headlines?country=us&apiKey=c320241a39ac4e618b598d64a2c4562b';
+  const apiKey = "c320241a39ac4e618b598d64a2c4562b";
+
+  useEffect(() => {
+    fetch(url, { method: "GET" })
+      .then(resp => resp.json())
+      .then(data => console.log(data))
+  }
+  );
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app_container">
+      <Header></Header>
     </div>
   );
 }
