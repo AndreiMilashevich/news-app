@@ -1,7 +1,7 @@
 import './Header.scss';
-import React from 'react';
+import React, { ReactElement } from 'react';
 
-function Header() {
+const Header: React.FC = (): ReactElement => {
   return (
     <div className="wrapper__header">
       <div className="wrapper__logo"></div>

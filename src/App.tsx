@@ -1,25 +1,26 @@
-import React, { useEffect } from 'react';
-import logo from './logo.svg';
+import React, { ReactElement, useEffect, useState } from 'react';
 import './App.scss';
 import Header from './components/Shared/Header/Header';
 
-function App() {
+const App: React.FC = (): ReactElement => {
 
-  const newsData = [];
+  const [newsData, setNewsData] = useState({});
 
   const url = 'https://newsapi.org/v2/top-headlines?country=us&apiKey=c320241a39ac4e618b598d64a2c4562b';
-  const apiKey = "c320241a39ac4e618b598d64a2c4562b";
+  // const apiKey = "c320241a39ac4e618b598d64a2c4562b";
 
   useEffect(() => {
     fetch(url, { method: "GET" })
       .then(resp => resp.json())
-      .then(data => console.log(data))
-  }
+      .then(data =>  setNewsData(data))
+      .catch(err => console.log(err))
+    }, []
   );
 
   return (
     <div className="app_container">
       <Header></Header>
+      <div>{ }</div>
     </div>
   );
 }
